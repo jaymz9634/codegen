@@ -22,7 +22,7 @@
 </table>
 </form>
 <hr/>
-<form method="post" action="/easy/dev/proc/retMetaInfo.jsp">
+<form method="post" action="retMetaInfo.jsp">
 <input type="hidden" name="mode" value="1"/>
 <table width="100%">
 	<tr>
