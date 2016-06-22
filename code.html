@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=euc-kr">
-<title>노가다를 그만합시다.</title>
+<title>Hey Developer!! Stop Working! It's Break Time.</title>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <link rel="stylesheet" href="http://bootstrapk.com/dist/css/bootstrap.min.css" media="screen">
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.js"></script>
@@ -15,7 +15,7 @@ function fnGenCode(){
 	var chkSpace = false;
 	var aspStr = 'sql = "" <br/>';
 	var jspStr = 'sql = ""; <br/>';
-	//if(confirm("공백제거 할까?")) chkSpace = true;
+	
 	for(var i = 0;i < splittedLines.length -1 ;i++){
 		if(chkSpace){			
 			//console.log("" +splittedLines[i].trim() + "" );
@@ -34,9 +34,9 @@ function fnGenCode(){
 </script>
 </head>
 <body>
-<!-- #include virtual="/dev/inc_nav.asp" -->
-<button type="button" class="btn btn-primary" onClick="fnGenCode();">생성</button>
-<button type="button" class="btn btn-warning" onClick="$('#txaSrc').text('');">지우기</button>
+
+<button type="button" class="btn btn-primary" onClick="fnGenCode();">Gen</button>
+<button type="button" class="btn btn-warning" onClick="$('#txaSrc').text('');">Reset</button>
 <br/>
 <br/>
 <table class="table table-bordered">
