@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=euc-kr">
+<title>노가다를 그만합시다.</title>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" href="http://bootstrapk.com/dist/css/bootstrap.min.css" media="screen">
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.js"></script>
+<script type="text/javascript" src="http://bootstrapk.com/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script type="text/javascript">
+function fnGenCode(){
+	var srcTxa = $('#txaSrc').val();
+	var splittedLines= srcTxa.split('\n');
+	var chkSpace = false;
+	var aspStr = 'sql = "" <br/>';
+	var jspStr = 'sql = ""; <br/>';
+	//if(confirm("공백제거 할까?")) chkSpace = true;
+	for(var i = 0;i < splittedLines.length -1 ;i++){
+		if(chkSpace){			
+			//console.log("" +splittedLines[i].trim() + "" );
+			aspStr += 'sql = sql & "' + splittedLines[i].trim() + ' " <br/>';
+			jspStr += 'sql += "' + splittedLines[i].trim() + ' "; <br/>';
+		}else{
+			//console.log("" +splittedLines[i]+ "" );
+			aspStr += 'sql = sql & "' + splittedLines[i] + ' " <br/>';
+			jspStr += 'sql += "' + splittedLines[i] + ' "; <br/>';
+		}
+	}
+	
+	$("#divASP").html(aspStr);
+	$("#divJSP").html(jspStr);
+}
+</script>
+</head>
+<body>
+<!-- #include virtual="/dev/inc_nav.asp" -->
+<button type="button" class="btn btn-primary" onClick="fnGenCode();">생성</button>
+<button type="button" class="btn btn-warning" onClick="$('#txaSrc').text('');">지우기</button>
+<br/>
+<br/>
+<table class="table table-bordered">
+		<tr>
+			<td width="33%" class="success">Query</td>
+			<td class="success">ASP</td>
+			<td class="success">JSP/JAVA</td>
+		</tr>
+		<tr>
+			<td class="warning">
+				<textarea class="form-control" rows="40%" id="txaSrc"></textarea>
+			</td>
+			<td class="warning">
+				<div id="divASP"></div>
+			</td>
+			<td class="warning">
+				<div id="divJSP"></div>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>
