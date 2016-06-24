@@ -58,9 +58,9 @@
 			*/
 			if(md.getColumnTypeName(i).equals("nvarchar") || md.getColumnTypeName(i).equals("char") || md.getColumnTypeName(i).equals("varchar")){
 				out.println("dSet.put(\""+md.getColumnLabel(i)+"\", rs.getString(\""+md.getColumnLabel(i)+"\"), "+md.getPrecision(i)+" );<br/>");
-			}else if(md.getColumnTypeName(i).equals("numeric")){
+			}else if(md.getColumnTypeName(i).equals("numeric") || md.getColumnTypeName(i).equals("money") ){
 				out.println("dSet.put(\""+md.getColumnLabel(i)+"\", rs.getDouble(\""+md.getColumnLabel(i)+"\"), "+md.getPrecision(i)+", "+md.getScale(i)+" );<br/>");
-			}else if(md.getColumnTypeName(i).equals("tinyint")){
+			}else if(md.getColumnTypeName(i).equals("tinyint") || md.getColumnTypeName(i).equals("int")){
 				out.println("dSet.put(\""+md.getColumnLabel(i)+"\", rs.getInt(\""+md.getColumnLabel(i)+"\"), "+md.getPrecision(i)+" );<br/>");
 			}
 		}
