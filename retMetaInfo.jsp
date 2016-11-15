@@ -183,7 +183,7 @@
 		sql = ""; 
 		sql += "SELECT DISTINCT "; 
 		<%
-		colsListStr = colsListStr.substring(0,colsListStr.lastIndexOf(",")-1) + " \"; ";
+		colsListStr = colsListStr.substring(0,colsListStr.lastIndexOf(",")) + " \"; ";
 		out.println(colsListStr);
 		%>
 		sql += "FROM "; 
