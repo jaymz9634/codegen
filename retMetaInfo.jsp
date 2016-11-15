@@ -22,8 +22,7 @@
 	String paramsStr = "";
 	String colsListStr = "";
 	Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-	String url = "jdbc:sqlserver://210.102.8.8:14303;databaseName=adv;user=sa;password=todakftk06735!#%;";
-	//String url = "jdbc:sqlserver://210.102.8.8:14303;databaseName=EASY2000_5080;user=sa;password=todakftk06735!#%;";
+	String url = "jdbc:sqlserver://IP:PORT;databaseName=adv;user=id;password=pw;";
 	conn = DriverManager.getConnection(url);
 	try {
 		String txtTbNm = (request.getParameter("txtTbNm") == null) ? "" : request.getParameter("txtTbNm");
