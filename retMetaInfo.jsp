@@ -21,11 +21,12 @@
 	String whereStr = "";
 	String paramsStr = "";
 	String colsListStr = "";
+	String txtTbNm = "";
 	Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-	String url = "jdbc:sqlserver://IP:PORT;databaseName=adv;user=id;password=pw;";
+	String url = "YOUR CONNECTION";
 	conn = DriverManager.getConnection(url);
 	try {
-		String txtTbNm = (request.getParameter("txtTbNm") == null) ? "" : request.getParameter("txtTbNm");
+		txtTbNm = (request.getParameter("txtTbNm") == null) ? "" : request.getParameter("txtTbNm");
 		String mode = (request.getParameter("mode") == null) ? "" : request.getParameter("mode");
 		String txtQStr = (request.getParameter("txtQStr") == null) ? "" : request.getParameter("txtQStr");
 		System.out.println(txtTbNm);
@@ -76,19 +77,19 @@
 				out.println("dSet.put(\""+md.getColumnLabel(i)+"\", rs.getString(\""+md.getColumnLabel(i)+"\"), "+md.getPrecision(i)+" );<br/>");
 				putStr += "dSet.put(\""+md.getColumnLabel(i)+"\", rs.getString(\""+md.getColumnLabel(i)+"\"), "+md.getPrecision(i)+" );<br/>";
 				whereStr += "if(!"+md.getColumnLabel(i)+".equals(\"\")) sql += \"";
-				whereStr += "AND " + md.getColumnLabel(i) +" = '"+md.getColumnLabel(i)+"' \" <br/>";				
+				whereStr += "AND " + md.getColumnLabel(i) +" = '"+md.getColumnLabel(i)+"' \"; <br/>";				
 				paramsStr += "String "+md.getColumnLabel(i)+" = (request.getParameter(\""+md.getColumnLabel(i)+"\") == null) ? \"\" : request.getParameter(\""+md.getColumnLabel(i)+"\");<br/>";
 			}else if(md.getColumnTypeName(i).equals("numeric") || md.getColumnTypeName(i).equals("money") ){
 				out.println("dSet.put(\""+md.getColumnLabel(i)+"\", rs.getDouble(\""+md.getColumnLabel(i)+"\"), "+md.getPrecision(i)+", "+md.getScale(i)+" );<br/>");
 				putStr += "dSet.put(\""+md.getColumnLabel(i)+"\", rs.getDouble(\""+md.getColumnLabel(i)+"\"), "+md.getPrecision(i)+", "+md.getScale(i)+" );<br/>";
 				whereStr += "if(!"+md.getColumnLabel(i)+".equals(\"\")) sql += \"";
-				whereStr += "AND " + md.getColumnLabel(i) +" = '"+md.getColumnLabel(i)+"' \" <br/>";
+				whereStr += "AND " + md.getColumnLabel(i) +" = '"+md.getColumnLabel(i)+"' \"; <br/>";
 				paramsStr += "String "+md.getColumnLabel(i)+" = (request.getParameter(\""+md.getColumnLabel(i)+"\") == null) ? \"\" : request.getParameter(\""+md.getColumnLabel(i)+"\");<br/>";
 			}else if(md.getColumnTypeName(i).equals("tinyint") || md.getColumnTypeName(i).equals("int")){
 				out.println("dSet.put(\""+md.getColumnLabel(i)+"\", rs.getInt(\""+md.getColumnLabel(i)+"\"), "+md.getPrecision(i)+" );<br/>");
 				putStr += "dSet.put(\""+md.getColumnLabel(i)+"\", rs.getInt(\""+md.getColumnLabel(i)+"\"), "+md.getPrecision(i)+" );<br/>";
 				whereStr += "if(!"+md.getColumnLabel(i)+".equals(\"\")) sql += \"";
-				whereStr += "AND " + md.getColumnLabel(i) +" = '"+md.getColumnLabel(i)+"' \" <br/>";
+				whereStr += "AND " + md.getColumnLabel(i) +" = '"+md.getColumnLabel(i)+"' \"; <br/>";
 				paramsStr += "String "+md.getColumnLabel(i)+" = (request.getParameter(\""+md.getColumnLabel(i)+"\") == null) ? \"\" : request.getParameter(\""+md.getColumnLabel(i)+"\");<br/>";
 			}
 		}
@@ -186,7 +187,7 @@
 		out.println(colsListStr);
 		%>
 		sql += "FROM "; 
-		sql += "TBL_COMMON_CODE "; 
+		sql += "<%=txtTbNm%> "; 
 		sql += "WHERE 1=1 ";		
 		<%=whereStr%>
 		
